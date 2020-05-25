@@ -10,6 +10,8 @@ Basic challenge of this sharing is the uncertainty related with ventilator deman
 Apart from the inherent uncertainty, we should also notice that decision making should happen in advance in order for the transfers to happen on time. Not only that but also the allocation should be continuous in order to have an impact. To address these challenges we propose a data driven adptive robust allocation model that adjusts the demand uncertainty using daily available demand data. Specifically, the model keeps improving as long as historical data accumulate. In this way we do not need to make assumptions on the demand, but we learn it instead. This results into more robust and stable solutions. Finally the model is adaptive so that it is able to look "days ahead" before deciding on transfers but without being impacted by future uncertainty.
 
 The particular problem solved is
+
+'''
     min ∑ᵢₜ VSᵢₜ + λ (∑ᵢₜ (fᵢₜ + ∑ⱼ xᵢⱼₜ))
     s.t.  ∀i ∈ S, ∀t ∈ T:
           xᵢᵢₜ = 0
@@ -23,7 +25,8 @@ The particular problem solved is
        ∑ⱼ xᵢⱼₜ ≤  Vᵢ₍ₜ₋₁₎*(1-yᵢₜ)
           VS, x, f   ≥ 0
           yᵢₜ ∈ {0,1}
-          
+'''
+
 where U is the uncertainty set discribed in the project_report.pdf
 
 Disclaimers:
@@ -40,19 +43,22 @@ assumptions are used:
           this depends on the distance between states, but for simplicity
           it is assumed to be the same for all state distances.
 
-_Note: The formulation is based on the
+ _Note_: The formulation is based on the
 https://github.com/COVIDAnalytics/ventilator-allocation
 with the following simplifications:
-  - No shortfall buffer is used due to the use of uncertainty sets_
+  - No shortfall buffer is used due to the use of uncertainty sets
 
 Baseline: All reality known in advance
 Solve the proposed model with the buffer.
+
 Sliding horizon:
+
 Start on day 2 using data from day 1.
 current day = 2
-1) Form uncertainty sets from data from day 1 to day current_day - 1
-2) Solve static RO for 4 days in advance
-3) Implement day <current_day>: Get new Ventilator supplies
-4) Realize the demand of current_day.
-5) current_day += 1
-6) Go to step 1
+
+    1) Form uncertainty sets from data from day 1 to day current_day - 1
+    2) Solve static RO for 4 days in advance
+    3) Implement day <current_day>: Get new Ventilator supplies
+    4) Realize the demand of current_day.
+    5) current_day += 1
+    6) Go to step 1
