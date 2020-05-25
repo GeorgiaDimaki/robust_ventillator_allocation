@@ -11,7 +11,7 @@ Apart from the inherent uncertainty, we should also notice that decision making 
 
 The particular problem solved is
 
-'''
+
     
     min ∑ᵢₜ VSᵢₜ + λ (∑ᵢₜ (fᵢₜ + ∑ⱼ xᵢⱼₜ))
     
@@ -28,7 +28,7 @@ The particular problem solved is
           VS, x, f   ≥ 0
           yᵢₜ ∈ {0,1}
           
-'''
+
 
 where U is the uncertainty set discribed in the project_report.pdf
 
